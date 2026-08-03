@@ -1,4 +1,4 @@
-from urllib import request
+import time
 import requests
 import os
 from dotenv import load_dotenv
@@ -58,13 +58,14 @@ def get_artist_metadata_musicbrainz(artist_name: str) -> dict:
     }
     artista_music = requests.get (URL_BASE, params=parametros, headers={"User-Agent": MUSICBRAINZ_USER_AGENT})
     datos_artista = artista_music.json()
-    lista_artistas = datos_artista["artists"]
+    lista_artistas = datos_artista.get("artists", [])
+
+    time.sleep(1)
+
     if lista_artistas:
         return lista_artistas[0]  # el primer resultado, el más relevante
     else:
         return {}
-
-
     
 
 if __name__ == "__main__":

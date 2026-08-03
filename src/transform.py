@@ -35,8 +35,8 @@ def classify_emergent_artists(df_artistas: pd.DataFrame, threshold_pct: float = 
     
     Args:
         df: DataFrame con al menos las columnas 'name' y 'nb_fan'
-        top_n: cuántos artistas considerar para el promedio (default 10)
-        threshold_pct: porcentaje del promedio que define el umbral (default 0.5)
+        top_n: cuántos artistas considerar para la mediana (all)
+        threshold_pct: porcentaje de la mediana que define el umbral (default 0.5)
     
     Returns:
         El mismo DataFrame, con una columna nueva 'es_emergente' (True/False)
